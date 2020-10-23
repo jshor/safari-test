@@ -12,8 +12,14 @@ const icalendar = new ICalendar({
   }
 })
 
+document.getElementById('userAgent').innerHTML = navigator.userAgent
+
 document
   .getElementById('downloadIcs')
   .addEventListener('click', () => {
-    icalendar.download()
+    try {
+      icalendar.download()
+    } catch (e) {
+      document.getElementById('errors').innerHTML = e
+    }
   })
